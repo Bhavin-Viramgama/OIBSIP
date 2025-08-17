@@ -6,6 +6,7 @@ import android.net.Uri
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
+import androidx.compose.animation.animateContentSize
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.text.ClickableText
@@ -106,11 +107,11 @@ fun App() {
             Column(
                 Modifier
                     .fillMaxSize()
-                    .padding(horizontal = 16.dp, vertical = 28.dp),
-                horizontalAlignment = Alignment.CenterHorizontally,
-                verticalArrangement = Arrangement.Center
+                    .padding(horizontal = 20.dp, vertical = 34.dp),
+                horizontalAlignment = Alignment.CenterHorizontally
             ) {
                 Text("Unit Converter",
+                    modifier = Modifier.padding(top = 16.dp),
                     style = TextStyle(
                         fontFamily = FontFamily.Cursive,
                         fontWeight = FontWeight.Bold,

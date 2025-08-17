@@ -11,6 +11,7 @@ import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyRow
 import androidx.compose.foundation.lazy.items
+import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.ArrowUpward
 import androidx.compose.material.icons.filled.SwapVert
@@ -19,6 +20,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.foundation.text.KeyboardOptions
+import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.text.style.TextAlign
@@ -40,7 +42,12 @@ fun CategoryChips(
                 label = { Text(cat.name.lowercase().replaceFirstChar { it.uppercase() }) },
                 leadingIcon = {
                     Icon(imageVector = Icons.Default.ArrowUpward, contentDescription = null)
-                }
+                },
+                colors = FilterChipDefaults.filterChipColors(
+                    selectedContainerColor = Color(0x60FFFFFF),
+                    selectedLabelColor = Color.Black,
+                    selectedLeadingIconColor = Color.Black
+                )
             )
         }
     }
@@ -78,7 +85,15 @@ fun BigValueCard(
                         singleLine = true,
                         textStyle = MaterialTheme.typography.displayLarge.copy(textAlign = TextAlign.Center, color = Color.Black),
                         keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Decimal),
-                        modifier = Modifier.fillMaxWidth()
+                        modifier = Modifier.fillMaxWidth(),
+                        shape = RoundedCornerShape(25),
+                        colors = OutlinedTextFieldDefaults.colors(
+                            cursorColor = Color(0x35FFFFFF),
+                            focusedContainerColor = Color.Transparent,
+                            unfocusedContainerColor = Color(0x10FFFFFF),
+                            focusedBorderColor = Color(0x20FFFFFF),
+                            unfocusedBorderColor = Color(0x25FFFFFF)
+                        )
                     )
                 } else {
                     AnimatedContent(
@@ -112,7 +127,8 @@ fun BigValueCard(
 fun SwapBubble(onClick: () -> Unit, modifier: Modifier = Modifier) {
     Surface(
         tonalElevation = 4.dp,
-        shape = MaterialTheme.shapes.extraLarge
+        shape = MaterialTheme.shapes.extraLarge,
+        color = Color(0x75FFFFFF)
     ) {
         Box(modifier = Modifier.clickable(onClick = onClick)
                 .size(52.dp)

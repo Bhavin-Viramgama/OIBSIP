@@ -17,7 +17,7 @@ private val TypographyModern = Typography(
 
 @Composable
 fun AppTheme(content: @Composable () -> Unit) {
-    val scheme = if (isSystemInDarkTheme()) darkColorScheme() else lightColorScheme()
+    val scheme = darkColorScheme()
     MaterialTheme(
         colorScheme = scheme,
         typography = TypographyModern,
